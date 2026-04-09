@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AP Macroeconomics — Complete Review</title>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600;700&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #faf8f4;
+  --bg-card: #ffffff;
+  --bg-card-alt: #f4f1eb;
+  --bg-dark: #1c1917;
+  --accent: #b45309;
+  --accent-light: #d97706;
+  --accent-bg: #fffbeb;
+  --teal: #0d9488;
+  --teal-bg: #f0fdfa;
+  --blue: #1d4ed8;
+  --blue-bg: #eff6ff;
+  --purple: #7c3aed;
+  --purple-bg: #f5f3ff;
+  --red: #dc2626;
+  --red-bg: #fef2f2;
+  --green: #16a34a;
+  --green-bg: #f0fdf4;
+  --text: #292524;
+  --text-secondary: #78716c;
+  --text-light: #a8a29e;
+  --border: #e7e5e4;
+  --border-dark: #d6d3d1;
+  --correct: #16a34a;
+  --incorrect: #dc2626;
+  --radius: 10px;
+  --shadow: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+  --shadow-lg: 0 4px 12px rgba(0,0,0,.08);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.72;
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border-dark); border-radius: 4px; }
+
+/* ── NAV ── */
+.topbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(250,248,244,.88); backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 28px;
+  display: flex; align-items: center; gap: 24px;
+}
+.topbar-brand {
+  font-family: 'Crimson Pro', serif; font-weight: 800; font-size: 1.05rem;
+  color: var(--accent); white-space: nowrap; letter-spacing: -.02em;
+}
+.topbar-nav { display: flex; gap: 2px; flex-wrap: wrap; flex: 1; }
+.topbar-nav a {
+  font-size: .7rem; font-weight: 600; text-transform: uppercase; letter-spacing: .07em;
+  color: var(--text-secondary); text-decoration: none;
+  padding: 5px 9px; border-radius: 6px; transition: all .15s; white-space: nowrap;
+}
+.topbar-nav a:hover { color: var(--accent); background: var(--accent-bg); }
+.topbar-nav a.active { color: var(--accent); background: var(--accent-bg); }
+.topbar-score {
+  display: flex; gap: 14px; align-items: center;
+  font-family: 'Fira Code', monospace; font-size: .78rem; color: var(--text-secondary);
+  white-space: nowrap;
+}
+.topbar-score .val { color: var(--accent); font-weight: 600; }
+
+/* ── PROGRESS ── */
+.progress-track { position: fixed; top: 53px; left: 0; right: 0; height: 3px; background: var(--border); z-index: 99; }
+.progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--accent), var(--teal)); transition: width .3s; }
+
+/* ── HERO ── */
+.hero {
+  padding: 130px 28px 70px; text-align: center;
+  background: linear-gradient(180deg, #fffbeb 0%, var(--bg) 100%);
+  border-bottom: 1px solid var(--border);
+}
+.hero h1 {
+  font-family: 'Crimson Pro', serif; font-weight: 800;
+  font-size: clamp(2.2rem, 5vw, 3.4rem); color: var(--bg-dark);
+  line-height: 1.12; margin-bottom: 12px; letter-spacing: -.03em;
+}
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero .lead {
+  font-size: 1.05rem; color: var(--text-secondary); max-width: 580px;
+  margin: 0 auto 28px; font-weight: 300; line-height: 1.65;
+}
+.hero-stats {
+  display: inline-flex; gap: 20px; background: var(--bg-card);
+  border: 1px solid var(--border); border-radius: 50px; padding: 10px 28px;
+  box-shadow: var(--shadow);
+}
+.hero-stat { text-align: center; }
+.hero-stat .label { font-size: .65rem; text-transform: uppercase; letter-spacing: .1em; color: var(--text-light); font-weight: 600; }
+.hero-stat .num { font-family: 'Fira Code'; font-size: 1.3rem; font-weight: 600; color: var(--accent); }
+
+/* ── CONTAINER ── */
+.container { max-width: 860px; margin: 0 auto; padding: 0 22px; }
+
+/* ── UNITS ── */
+.unit { padding: 64px 0 40px; }
+.unit + .unit { border-top: 1px solid var(--border); }
+.unit-badge {
+  display: inline-block; font-family: 'Fira Code'; font-size: .7rem; font-weight: 600;
+  color: var(--accent); text-transform: uppercase; letter-spacing: .12em;
+  background: var(--accent-bg); padding: 3px 10px; border-radius: 4px; margin-bottom: 8px;
+}
+.unit h2 {
+  font-family: 'Crimson Pro', serif; font-weight: 800; font-size: 1.75rem;
+  color: var(--bg-dark); margin-bottom: 8px; letter-spacing: -.02em;
+}
+.unit-desc { color: var(--text-secondary); font-size: .95rem; margin-bottom: 28px; max-width: 650px; }
+
+/* ── CARDS ── */
+.card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 24px; margin-bottom: 16px;
+  box-shadow: var(--shadow); transition: box-shadow .2s;
+}
+.card:hover { box-shadow: var(--shadow-lg); }
+.card h3 {
+  font-family: 'Crimson Pro', serif; font-weight: 700; font-size: 1.15rem;
+  color: var(--bg-dark); margin-bottom: 10px;
+}
+.card p, .card li { font-size: .92rem; color: var(--text); margin-bottom: 6px; }
+.card ul { padding-left: 18px; }
+.card ul li { margin-bottom: 4px; }
+.card ul li::marker { color: var(--accent-light); }
+
+/* ── FORMULA ── */
+.formula {
+  background: var(--blue-bg); border-left: 3px solid var(--blue);
+  padding: 10px 16px; border-radius: 0 8px 8px 0;
+  margin: 10px 0; font-family: 'Fira Code', monospace; font-size: .88rem;
+  color: var(--blue); line-height: 1.6;
+}
+
+/* ── KEY TAKEAWAY ── */
+.takeaway {
+  background: var(--accent-bg); border: 1px solid #fde68a;
+  padding: 14px 18px; border-radius: 8px; margin: 12px 0;
+  font-size: .9rem; color: #92400e;
+}
+.takeaway strong { color: var(--accent); }
+
+/* ── TIP ── */
+.tip {
+  background: var(--teal-bg); border: 1px solid #99f6e4;
+  padding: 12px 16px; border-radius: 8px; margin: 12px 0;
+  font-size: .88rem; color: #134e4a;
+}
+.tip strong { color: var(--teal); }
+
+/* ── GRAPH ── */
+.graph-wrap {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 20px; margin: 20px 0;
+  box-shadow: var(--shadow);
+}
+.graph-wrap h4 {
+  font-family: 'Crimson Pro', serif; font-weight: 700; font-size: 1.05rem;
+  color: var(--blue); margin-bottom: 12px;
+}
+.graph-area {
+  background: var(--bg-card-alt); border-radius: 8px; padding: 10px;
+  display: flex; justify-content: center;
+}
+.graph-area svg { max-width: 100%; height: auto; }
+.graph-caption {
+  font-size: .82rem; color: var(--text-light); text-align: center;
+  margin-top: 8px; font-style: italic;
+}
+
+/* ── PRACTICE ── */
+.practice {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 24px; margin: 24px 0;
+  box-shadow: var(--shadow);
+}
+.practice h4 {
+  font-family: 'Crimson Pro', serif; font-weight: 700; font-size: 1.1rem;
+  color: var(--red); margin-bottom: 18px;
+}
+
+.q-block {
+  background: var(--bg-card-alt); border-radius: 8px;
+  padding: 18px; margin-bottom: 14px;
+  border: 2px solid transparent; transition: border-color .3s;
+}
+.q-block.correct { border-color: var(--correct); }
+.q-block.wrong { border-color: var(--incorrect); }
+.q-num { font-family: 'Fira Code'; font-size: .72rem; color: var(--text-light); margin-bottom: 4px; font-weight: 600; }
+.q-text { font-size: .92rem; font-weight: 600; color: var(--text); margin-bottom: 12px; line-height: 1.55; }
+.q-opts { display: flex; flex-direction: column; gap: 6px; }
+.q-opt {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 7px; padding: 10px 14px;
+  font-size: .88rem; color: var(--text); cursor: pointer;
+  transition: all .15s; text-align: left;
+  font-family: 'DM Sans', sans-serif;
+}
+.q-opt:hover:not(.picked):not(.locked) { border-color: var(--accent); background: var(--accent-bg); }
+.q-opt.picked.right { background: var(--green-bg); border-color: var(--correct); color: var(--correct); font-weight: 600; }
+.q-opt.picked.bad { background: var(--red-bg); border-color: var(--incorrect); color: var(--incorrect); }
+.q-opt.reveal { border-color: var(--correct); color: var(--correct); opacity: .7; }
+.q-opt.locked { cursor: default; }
+.q-expl {
+  margin-top: 12px; padding: 12px; border-radius: 7px;
+  background: var(--teal-bg); border: 1px solid #99f6e4;
+  font-size: .85rem; color: #134e4a; display: none;
+}
+.q-expl.show { display: block; animation: fadeUp .25s ease; }
+.q-expl strong { color: var(--teal); }
+
+/* ── FRQ ── */
+.frq {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 24px; margin: 24px 0;
+  box-shadow: var(--shadow);
+}
+.frq h4 {
+  font-family: 'Crimson Pro', serif; font-weight: 700; font-size: 1.1rem;
+  color: var(--purple); margin-bottom: 14px;
+}
+.frq-prompt { font-size: .92rem; line-height: 1.7; margin-bottom: 14px; }
+.frq-prompt ol { padding-left: 20px; }
+.frq-prompt li { margin-bottom: 4px; }
+.reveal-btn {
+  background: var(--purple); color: white; border: none;
+  padding: 8px 20px; border-radius: 7px; cursor: pointer;
+  font-family: 'DM Sans'; font-weight: 700; font-size: .82rem;
+  text-transform: uppercase; letter-spacing: .05em; transition: opacity .15s;
+}
+.reveal-btn:hover { opacity: .85; }
+.frq-ans {
+  margin-top: 14px; padding: 16px; border-radius: 8px;
+  background: var(--purple-bg); border: 1px solid #ddd6fe;
+  font-size: .88rem; color: #4c1d95; display: none; line-height: 1.7;
+}
+.frq-ans.show { display: block; animation: fadeUp .25s ease; }
+.frq-ans strong { color: var(--purple); }
+.frq-ans em { color: var(--accent); font-style: normal; font-weight: 600; }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 720px) {
+  .topbar { padding: 10px 14px; gap: 10px; flex-wrap: wrap; }
+  .topbar-nav { gap: 1px; }
+  .topbar-nav a { font-size: .62rem; padding: 4px 6px; }
+  .topbar-score { font-size: .7rem; gap: 8px; }
+  .hero { padding: 110px 16px 50px; }
+  .container { padding: 0 12px; }
+  .card, .practice, .frq, .graph-wrap { padding: 16px; }
+  .hero-stats { gap: 12px; padding: 8px 16px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="topbar">
+  <div class="topbar-brand">AP Macro Review</div>
+  <div class="topbar-nav">
+    <a href="#u1">1 Basics</a>
+    <a href="#u2">2 GDP</a>
+    <a href="#u3">3 AD-AS</a>
+    <a href="#u4">4 Fiscal</a>
+    <a href="#u5">5 Financial</a>
+    <a href="#u6">6 Monetary</a>
+    <a href="#u7">7 Trade</a>
+  </div>
+  <div class="topbar-score">
+    <span><span class="val" id="sCorrect">0</span> correct</span>
+    <span><span class="val" id="sTotal">0</span>/<span id="sMax">0</span></span>
+    <span><span class="val" id="sPct">—</span></span>
+  </div>
+</nav>
+<div class="progress-track"><div class="progress-fill" id="progFill"></div></div>
+
+<section class="hero">
+  <h1>Complete <em>Macroeconomics</em> Review</h1>
+  <p class="lead">Every unit, every graph, every formula. Work through concept reviews, key takeaways, and practice problems to master AP Macro.</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="label">Units</div><div class="num">7</div></div>
+    <div class="hero-stat"><div class="label">Questions</div><div class="num" id="totalQs">0</div></div>
+    <div class="hero-stat"><div class="label">Graphs</div><div class="num">8</div></div>
+  </div>
+</section>
+
+<div class="container">
+
+<!-- ═══════════════════════ UNIT 1 ═══════════════════════ -->
+<section class="unit" id="u1">
+<div class="unit-badge">Unit 1</div>
+<h2>Basic Economic Concepts</h2>
+<p class="unit-desc">Scarcity, opportunity cost, the PPC, comparative advantage, and how economies organize production.</p>
+
+<div class="card"><h3>Scarcity & Opportunity Cost</h3>
+<p><strong>Scarcity</strong> is the fundamental problem of economics: unlimited wants vs. limited resources. Because of scarcity, every choice has a cost.</p>
+<p><strong>Opportunity cost</strong> = the value of the next-best alternative you give up when you make a choice. It is ALWAYS a ratio when comparing production of two goods.</p>
+<div class="formula">Opportunity Cost of Good A = (Amount of B given up) ÷ (Amount of A gained)</div>
+</div>
+
+<div class="card"><h3>Production Possibilities Curve (PPC)</h3>
+<p>The PPC shows the maximum combinations of two goods an economy can produce using all its resources efficiently.</p>
+<ul>
+<li><strong>On the curve</strong> = productively efficient (full employment)</li>
+<li><strong>Inside the curve</strong> = inefficient / unemployment</li>
+<li><strong>Outside the curve</strong> = unattainable with current resources</li>
+<li><strong>Bowed-out shape</strong> = increasing opportunity cost (resources aren't equally suited to both goods)</li>
+<li><strong>Straight line</strong> = constant opportunity cost</li>
+<li><strong>Outward shift</strong> = economic growth (more resources, better technology, education)</li>
+</ul>
+<div class="takeaway"><strong>Key Takeaway:</strong> The PPC can shift outward for only ONE good if technological improvement is industry-specific. A general improvement (education, capital investment) shifts the entire curve outward.</div>
+<div class="takeaway"><strong>Key Takeaway:</strong> Moving from inside to a point ON the curve is NOT economic growth — it's reducing inefficiency. Growth means the curve itself shifts outward.</div>
+</div>
+
+<div class="graph-wrap"><h4>Key Graph: Production Possibilities Curve</h4>
+<div class="graph-area">
+<svg viewBox="0 0 440 330" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="a1" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#78716c"/></marker></defs>
+<line x1="60" y1="275" x2="400" y2="275" stroke="#78716c" stroke-width="1.5" marker-end="url(#a1)"/>
+<line x1="60" y1="275" x2="60" y2="30" stroke="#78716c" stroke-width="1.5" marker-end="url(#a1)"/>
+<text x="230" y="310" fill="#78716c" font-size="12" text-anchor="middle" font-family="DM Sans">Consumer Goods</text>
+<text x="20" y="152" fill="#78716c" font-size="12" text-anchor="middle" font-family="DM Sans" transform="rotate(-90,20,152)">Capital Goods</text>
+<path d="M68,58 Q120,68 200,118 Q300,186 382,270" fill="none" stroke="#b45309" stroke-width="2.8"/>
+<path d="M68,38 Q138,48 228,98 Q330,172 412,270" fill="none" stroke="#b45309" stroke-width="2" stroke-dasharray="7,5" opacity=".45"/>
+<text x="387" y="263" fill="#b45309" font-size="10" font-family="Fira Code">PPC1</text>
+<text x="414" y="263" fill="#b45309" font-size="10" font-family="Fira Code" opacity=".45">PPC2</text>
+<circle cx="200" cy="118" r="5" fill="#d97706"/>
+<text x="210" y="112" fill="#92400e" font-size="11" font-weight="600" font-family="DM Sans">A (efficient)</text>
+<circle cx="175" cy="196" r="5" fill="#dc2626"/>
+<text x="185" y="192" fill="#dc2626" font-size="11" font-weight="600" font-family="DM Sans">B (inefficient)</text>
+<circle cx="345" cy="80" r="5" fill="#7c3aed"/>
+<text x="300" y="72" fill="#7c3aed" font-size="11" font-weight="600" font-family="DM Sans">C (unattainable)</text>
+</svg>
+</div>
+<p class="graph-caption">Bowed-out PPC with economic growth shown as an outward shift (PPC1 → PPC2).</p>
+</div>
+
+<div class="card"><h3>Comparative & Absolute Advantage</h3>
+<p><strong>Absolute advantage:</strong> produce MORE with the same resources.</p>
+<p><strong>Comparative advantage:</strong> produce at a LOWER opportunity cost. This is the basis for specialization and trade.</p>
+<div class="formula">Terms of trade must fall BETWEEN the two parties' opportunity costs for both to benefit.</div>
+<div class="takeaway"><strong>Key Takeaway:</strong> A country CAN have absolute advantage in both goods but CANNOT have comparative advantage in both. If you have CA in one good, the other party has CA in the other. Always.</div>
+<div class="takeaway"><strong>Key Takeaway:</strong> For output problems, the OC formula is "other good ÷ this good." For input problems (hours/resources needed), it flips: "this good ÷ other good." Watch out for which type the problem gives you!</div>
+<div class="tip"><strong>AP Tip:</strong> Comparative advantage tables appear on almost every AP exam. Practice computing OC from BOTH output tables and input tables.</div>
+</div>
+
+<div class="card"><h3>Economic Systems & Circular Flow</h3>
+<p>The <strong>circular flow model</strong> shows interactions between households and firms in product and factor markets.</p>
+<ul>
+<li><strong>Product market:</strong> Firms sell goods/services to households (GDP is measured here)</li>
+<li><strong>Factor (resource) market:</strong> Households sell labor, land, capital to firms</li>
+<li><strong>Leakages:</strong> saving, taxes, imports (money leaving the spending stream)</li>
+<li><strong>Injections:</strong> investment, government spending, exports (money entering)</li>
+</ul>
+<div class="takeaway"><strong>Key Takeaway:</strong> In equilibrium, leakages = injections. If injections > leakages, GDP rises. If leakages > injections, GDP falls.</div>
+</div>
+
+<div class="practice"><h4>Practice Problems — Unit 1</h4>
+
+<div class="q-block" data-ans="2"><div class="q-num">Q1</div>
+<div class="q-text">Country X produces 100 cars or 200 computers. Country Y produces 60 cars or 180 computers. Which is correct?</div>
+<div class="q-opts">
+<button class="q-opt" data-i="0">A) Country X has comparative advantage in computers</button>
+<button class="q-opt" data-i="1">B) Country Y has absolute advantage in both goods</button>
+<button class="q-opt" data-i="2">C) Country Y has comparative advantage in computers</button>
+<button class="q-opt" data-i="3">D) Neither country benefits from trade</button>
+</div>
+<div class="q-expl"><strong>Answer: C.</strong> X's OC of 1 computer = 100/200 = 0.5 cars. Y's OC of 1 computer = 60/180 = 0.33 cars. Y has lower OC → comparative advantage in computers.</div>
+</div>
+
+<div class="q-block" data-ans="1"><div class="q-num">Q2</div>
+<div class="q-text">A point inside the PPC represents:</div>
+<div class="q-opts">
+<button class="q-opt" data-i="0">A) Full employment of all resources</button>
+<button class="q-opt" data-i="1">B) Unemployment or productive inefficiency</button>
+<button class="q-opt" data-i="2">C) Economic growth</button>
+<button class="q-opt" data-i="3">D) An unattainable combination</button>
+</div>
+<div class="q-expl"><strong>Answer: B.</strong> Inside the PPC = not using all resources efficiently. Could be unemployment, underutilized factories, or poor allocation.</div>
+</div>
+
+<div class="q-block" data-ans="3"><div class="q-num">Q3</div>
+<div class="q-text">Which would shift the PPC outward?</div>
+<div class="q-opts">
+<button class="q-opt" data-i="0">A) An increase in consumer spending</button>
+<button class="q-opt" data-i="1">B) A decrease in unemployment</button>
+<button class="q-opt" data-i="2">C) A government budget surplus</button>
+<button class="q-opt" data-i="3">D) A technological improvement in all industries</button>
+</div>
+<div class="q-expl"><strong>Answer: D.</strong> Technology that improves ALL industries shifts the entire PPC outward. Reduced unemployment moves toward the curve (not a shift). Spending & surpluses don't change productive capacity.</div>
+</div>
+
+<div class="q-block" data-ans="1"><div class="q-num">Q4</div>
+<div class="q-text">In Country A, the opportunity cost of 1 unit of wheat is 3 units of cloth. In Country B, the opportunity cost of 1 unit of wheat is 2 units of cloth. Which statement is TRUE?</div>
+<div class="q-opts">
+<button class="q-opt" data-i="0">A) Country A has comparative advantage in wheat</button>
+<button class="q-opt" data-i="1">B) Country B has comparative advantage in wheat</button>
+<button class="q-opt" data-i="2">C) Country A has comparative advantage in both goods</button>
+<button class="q-opt" data-i="3">D) Neither has comparative advantage</button>
+</div>
+<div class="q-expl"><strong>Answer: B.</strong> Country B gives up only 2 cloth per wheat vs. A's 3. B has lower OC of wheat → CA in wheat. A has CA in cloth (A: OC of 1 cloth = 1/3 wheat vs B: OC of 1 cloth = 1/2 wheat; 1/3 < 1/2).</div>
+</div>
+
+<div class="q-block" data-ans="2"><div class="q-num">Q5</div>
+<div class="q-text">Which best describes a straight-line PPC?</div>
+<div class="q-opts">
+<button class="q-opt" data-i="0">A) Increasing opportunity cost</button>
+<button class="q-opt" data-i="1">B) Decreasing opportunity cost</button>
+<button class="q-opt" data-i="2">C) Constant opportunity cost</button>
+<button class="q-opt" data-i="3">D) Zero opportunity cost</button>
+</div>
+<div class="q-expl"><strong>Answer: C.</strong> A straight-line PPC means resources are perfectly adaptable to producing either good, so the trade-off ratio stays the same at every point.</div>
+</div>
+</div>
+</section>
+
+<!-- ═══════════════════════ UNIT 2 ═══════════════════════ -->
+<section class="unit" id="u2">
+<div class="unit-badge">Unit 2</div>
+<h2>Measuring Economic Performance</h2>
+<p class="unit-desc">GDP, unemployment types, inflation, price indices, the business cycle, and economic indicators.</p>
+
+<div class="card"><h3>Gross Domestic Product (GDP)</h3>
+<p>GDP = total market value of all <strong>final</strong> goods and services produced <strong>within a country's borders</strong> in a given year.</p>
+<div class="formula">Expenditure Approach: GDP = C + I + G + (X − M)</div>
+<p><strong>C</strong> = consumer spending (~70%) | <strong>I</strong> = gross private investment | <strong>G</strong> = government spending (NOT transfers) | <strong>X−M</strong> = net exports</p>
+<div class="formula">Income Approach: GDP = wages + rent + interest + profits</div>
+<div class="takeaway"><strong>Key Takeaway:</strong> GDP does NOT include: used goods, intermediate goods, financial transactions (stocks/bonds), transfer payments (Social Security, welfare), non-market activities (housework), or underground economy.</div>
+<div class="takeaway"><strong>Key Takeaway:</strong> Investment (I) in GDP means business investment — new factories, equipment, construction, inventory changes. It does NOT mean buying stocks/bonds.</div>
+</div>
+
+<div class="card"><h3>Nominal vs. Real GDP</h3>
+<div class="formula">GDP Deflator = (Nominal GDP ÷ Real GDP) × 100</div>
+<div class="formula">Real GDP = (Nominal GDP ÷ GDP Deflator) × 100</div>
+<p><strong>Nominal GDP</strong> can rise just because prices rose. <strong>Real GDP</strong> adjusts for inflation and shows true output changes.</p>
+<div class="takeaway"><strong>Key Takeaway:</strong> In the BASE YEAR, Nominal GDP = Real GDP, and the GDP Deflator = 100. If the deflator is 120, prices are 20% higher than the base year.</div>
+<div class="tip"><strong>AP Tip:</strong> Per capita real GDP (Real GDP ÷ population) is the best measure of living standards over time. Total real GDP alone doesn't account for population growth.</div>
+</div>
+
+<div class="card"><h3>Unemployment</h3>
+<div class="formula">Unemployment Rate = (# Unemployed ÷ Labor Force) × 100</div>
+<div class="formula">Labor Force = Employed + Unemployed (actively seeking work)</div>
+<div class="formula">LFPR = (Labor Force ÷ Working-Age Population) × 100</div>
+<p><strong>Three types:</strong></p>
+<ul>
+<li><strong>Frictional</strong> — between jobs, new entrants, voluntary transitions. ALWAYS exists.</li>
+<li><strong>Structural</strong> — skills mismatch, tech change, geographic mismatch. Can be long-lasting.</li>
+<li><strong>Cyclical</strong> — caused by recessions (insufficient demand).</li>
+</ul>
+<div class="formula">Natural Rate of Unemployment (NRU) = Frictional + Structural (ZERO cyclical)</div>
+<div class="takeaway"><strong>Key Takeaway:</strong> "Full employment" does NOT mean 0% unemployment. It means zero CYCLICAL unemployment. Frictional and structural are considered natural.</div>
+<div class="takeaway"><strong>Key Takeaway:</strong> Discouraged workers, part-time workers who want full-time, and people not actively searching are NOT in the labor force. This means the official rate understates true joblessness.</div>
+</div>
+
+<div class="card"><h3>Inflation & Price Indices</h3>
+<div class="formula">CPI = (Cost of basket in current year ÷ Cost in base year) × 100</div>
+<div class="formula">Inflation Rate = [(CPI<sub>2</sub> − CPI<sub>1</sub>) ÷ CPI<sub>1</sub>] × 100</div>
+<div class="formula">Fisher Equation: Real Interest Rate = Nominal Interest Rate − Inflation Rate</div>
+<p><strong>Costs of inflation:</strong> Menu costs, shoe-leather costs, uncertainty, income redistribution. <strong>Unexpected inflation</strong> hurts lenders/savers, helps borrowers.</p>
+<div class="takeaway"><strong>Key Takeaway:</strong> The REAL interest rate is what matters for economic decisions. If nominal rate = 6% and inflation = 4%, savers only earn 2% in purchasing power.</div>
+<div class="takeaway"><strong>Key Takeaway:</strong> Deflation (falling prices) can be worse than moderate inflation — it increases the real burden of debt, discourages spending (wait for lower prices), and can create a deflationary spiral.</div>
+</div>
+
+<div class="graph-wrap"><h4>Key Graph: The Business Cycle</h4>
+<div class="graph-area">
+<svg viewBox="0 0 480 270" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="a2" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#78716c"/></marker></defs>
+<line x1="40" y1="230" x2="455" y2="230" stroke="#78716c" stroke-width="1.5" marker-end="url(#a2)"/>
+<line x1="40" y1="230" x2="40" y2="20" stroke="#78716c" stroke-width="1.5" marker-end="url(#a2)"/>
+<text x="248" y="260" fill="#78716c" font-size="11" text-anchor="middle" font-family="DM Sans">Time</text>
+<text x="14" y="125" fill="#78716c" font-size="11" text-anchor="middle" font-family="DM Sans" transform="rotate(-90,14,125)">Real GDP</text>
+<line x1="48" y1="195" x2="448" y2="85" stroke="#78716c" stroke-width="1" stroke-dasharray="6,4" opacity=".4"/>
+<text x="450" y="82" fill="#a8a29e" font-size="9" font-family="DM Sans">Trend</text>
+<path d="M48,190 Q95,148 135,126 Q175,108 195,112 Q225,122 255,156 Q285,190 305,175 Q335,138 375,102 Q415,78 445,88" fill="none" stroke="#b45309" stroke-width="2.5"/>
+<text x="125" y="116" fill="#d97706" font-size="10" font-weight="700" font-family="DM Sans">Peak</text>
+<circle cx="135" cy="126" r="4" fill="#d97706"/>
+<text x="240" y="172" fill="#dc2626" font-size="10" font-weight="700" font-family="DM Sans">Trough</text>
+<circle cx="255" cy="156" r="4" fill="#dc2626"/>
+<text x="170" y="148" fill="#7c3aed" font-size="9" font-family="DM Sans">Contraction</text>
+<text x="305" y="142" fill="#16a34a" font-size="9" font-family="DM Sans">Expansion</text>
+</svg>
+</div>
+<p class="graph-caption">Expansion → Peak → Contraction → Trough, cycling around the long-run growth trend.</p>
+</div>
+
+<div class="practice"><h4>Practice Problems — Unit 2</h4>
+
+<div class="q-block" data-ans="1"><div class="q-num">Q6</div>
+<div class="q-text">If nominal GDP is $20 trillion and real GDP is $18 trillion, the GDP deflator is:</div>
+<div class="q-opts">
+<button class="q-opt" data-i="0">A) 90</button>
+<button class="q-opt" data-i="1">B) 111.1</button>
+<button class="q-opt" data-i="2">C) 100</button>
+<button class="q-opt" data-i="3">D) 120</button>
+</div>
+<div class="q-expl"><strong>Answer: B.</strong> GDP Deflator = (20/18) × 100 = 111.1. Prices are 11.1% higher than the base year.</div>
+</div>
+
+<div class="q-block" data-ans="2"><div class="q-num">Q7</div>
+<div class="q-text">A software engineer loses her job because AI automated her role. This is:</div>
+<div class="q-opts">
+<button class="q-opt" data-i="0">A) Frictional unemployment</button>
+<button class="q-opt" data-i="1">B) Cyclical unemployment</button>
+<button class="q-opt" data-i="2">C) Structural unemployment</button>
+<button class="q-opt" data-i="3">D) Seasonal unemployment</button>
+</div>
+<div class="q-expl"><strong>Answer: C.</strong> Structural — her skills no longer match available jobs due to technological change. Not cyclical (no recession) or frictional (not voluntarily between jobs).</div>
+</div>
+
+<div class="q-block" data-ans="0"><div class="q-num">Q8</div>
+<div class="q-text">Nominal interest rate = 6%, inflation = 4%. The real interest rate is:</div>
+<div class="q-opts">
+<button class="q-opt" data-i="0">A) 2%</button>
+<button class="q-opt" data-i="1">B) 10%</button>
+<button class="q-opt" data-i="2">C) 4%</button>
+<button class="q-opt" data-i="3">D) 1.5%</button>
+</div>
+<div class="q-expl"><strong>Answer: A.</strong> Fisher: Real = Nominal − Inflation = 6% − 4% = 2%.</div>
+</div>
+
+<div class="q-block" data-ans="2"><div class="q-num">Q9</div>
+<div class="q-text">Which is included in GDP?</div>
+<div class="q-opts">
+<button class="q-opt" data-i="0">A) Buying a used car from a neighbor</button>
+<button class="q-opt" data-i="1">B) Social Security payments to retirees</button>
+<button class="q-opt" data-i="2">C) A new office building constructed this year</button>
+<button class="q-opt" data-i="3">D) Buying 100 shares of Apple stock</button>
+</div>
+<div class="q-expl"><strong>Answer: C.</strong> New construction is investment (I). Used goods, transfer payments, and stock purchases are NOT included in GDP.</div>
+</div>
+
+<div class="q-block" data-ans="0"><div class="q-num">Q10</div>
+<div class="q-text">If CPI was 200 in Year 1 and 210 in Year 2, the inflation rate is:</div>
+<div class="q-opts">
+<button class="q-opt" data-i="0">A) 5%</button>
+<button class="q-opt" data-i="1">B) 10%</button>
+<button class="q-opt" data-i="2">C) 4.76%</button>
+<button class="q-opt" data-i="3">D) 210%</button>
+</div>
+<div class="q-expl"><strong>Answer: A.</strong> Inflation rate = [(210−200)/200] × 100 = 5%.</div>
+</div>
+
+<div class="q-block" data-ans="3"><div class="q-num">Q11</div>
+<div class="q-text">Unexpected inflation benefits:</div>
+<div class="q-opts">
+<button class="q-opt" data-i="0">A) Lenders</button>
+<button class="q-opt" data-i="1">B) People on fixed incomes</button>
+<button class="q-opt" data-i="2">C) Savers</button>
+<button class="q-opt" data-i="3">D) Borrowers</button>
+</div>
+<div class="q-expl"><strong>Answer: D.</strong> Borrowers repay loans with money that's worth less than when they borrowed it. Lenders, savers, and fixed-income earners are hurt.</div>
+</div>
+</div>
+
+<div class="frq"><h4>Free-Response — Unit 2</h4>
+<div class="frq-prompt">
+<p>In Econoland: Population = 200M. Employed = 120M. Unemployed = 15M. Discouraged workers = 5M.</p>
+<ol>
+<li>Calculate the labor force.</li>
+<li>Calculate the unemployment rate.</li>
+<li>If discouraged workers were counted as unemployed, what would the rate be?</li>
+<li>Explain two reasons the official rate may understate true joblessness.</li>
+</ol>
+</div>
+<button class="reveal-btn" onclick="toggleFRQ(this)">Reveal Answer</button>
+<div class="frq-ans">
+<p><strong>(a)</strong> LF = 120M + 15M = <em>135 million</em></p>
+<p><strong>(b)</strong> UR = (15/135) × 100 = <em>11.1%</em></p>
+<p><strong>(c)</strong> New LF = 140M. New unemployed = 20M. Rate = (20/140) × 100 = <em>14.3%</em></p>
+<p><strong>(d)</strong> 1) <em>Discouraged workers</em> who stopped looking aren't counted. 2) <em>Underemployed</em> part-time workers wanting full-time are counted as "employed."</p>
+</div>
+</div>
+</section>
+
+<!-- ═══════════════════════ UNIT 3 ═══════════════════════ -->
+<section class="unit" id="u3">
+<div class="unit-badge">Unit 3</div>
+<h2>Aggregate Demand & Aggregate Supply</h2>
+<p class="unit-desc">The core macro model — AD, SRAS, LRAS, equilibrium, output gaps, the multiplier, and self-correction.</p>
+
+<div class="card"><h3>Aggregate Demand (AD)</h3>
+<p>AD = total spending at each price level. Slopes downward due to three effects:</p>
+<ul>
+<li><strong>Wealth effect:</strong> Lower PL → higher real wealth → more C</li>
+<li><strong>Interest rate effect:</strong> Lower PL → less money demand → lower i → more I</li>
+<li><strong>Net export effect:</strong> Lower PL → domestic goods cheaper abroad → more Xn</li>
+</ul>
+<p><strong>Shifters of AD:</strong> Anything that changes C, I, G, or Xn NOT caused by a price level change.</p>
+<div class="takeaway"><strong>Key Takeaway:</strong> A change in the PRICE LEVEL causes movement ALONG AD. A change in a component of spending (consumer confidence, government policy, etc.) SHIFTS AD.</div>
+</div>
+
+<div class="card"><h3>Short-Run & Long-Run Aggregate Supply</h3>
+<p><strong>SRAS</strong> slopes upward — as PL rises, sticky wages mean profit margins increase and firms produce more.</p>
+<p><strong>LRAS</strong> is vertical at potential GDP (Yf) — in the long run, wages fully adjust and output depends only on resources & technology.</p>
+<p><strong>SRAS shifters:</strong> Input prices (wages, oil), productivity, supply shocks, taxes/subsidies on producers, inflationary expectations.</p>
+<p><strong>LRAS shifters:</strong> Changes in quantity/quality of resources, technology, institutions (anything that changes potential GDP).</p>
+<div class="takeaway"><strong>Key Takeaway:</strong> If ONLY AD shifts, PL and real GDP move in the SAME direction. If ONLY SRAS shifts, PL and real GDP move in OPPOSITE directions (this is what makes supply shocks so problematic).</div>
+<div class="takeaway"><strong>Key Takeaway:</strong> LRAS shifts are the SAME things that shift the PPC. Both represent the economy's productive capacity.</div>
+</div>
+
+<div class="graph-wrap"><h4>Key Graph: AD-AS Model (Recessionary Gap)</h4>
+<div class="graph-area">
+<svg viewBox="0 0 460 330" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="a3" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#78716c"/></marker></defs>
+<line x1="60" y1="285" x2="420" y2="285" stroke="#78716c" stroke-width="1.5" marker-end="url(#a3)"/>
+<line x1="60" y1="285" x2="60" y2="30" stroke="#78716c" stroke-width="1.5" marker-end="url(#a3)"/>
+<text x="240" y="320" fill="#78716c" font-size="11" text-anchor="middle" font-family="DM Sans">Real GDP</text>
+<text x="20" y="158" fill="#78716c" font-size="11" text-anchor="middle" font-family="DM Sans" transform="rotate(-90,20,158)">Price Level</text>
+<line x1="288" y1="48" x2="288" y2="280" stroke="#7c3aed" stroke-width="2.5"/>
+<text x="293" y="42" fill="#7c3aed" font-size="11" font-weight="700" font-family="DM Sans">LRAS</text>
+<path d="M100,248 Q200,208 278,155 Q348,110 398,58" fill="none" stroke="#d97706" stroke-width="2.5"/>
+<text x="400" y="52" fill="#d97706" font-size="11" font-weight="700" font-family="DM Sans">SRAS</text>
+<path d="M88,68 Q148,108 208,168 Q258,222 308,268" fill="none" stroke="#0d9488" stroke-width="2.5"/>
+<text x="310" y="278" fill="#0d9488" font-size="11" font-weight="700" font-family="DM Sans">AD</text>
+<circle cx="228" cy="183" r="5" fill="#dc2626"/>
+<text x="160" y="178" fill="#dc2626" font-size="10" font-weight="700" font-family="DM Sans">E (gap)</text>
+<line x1="60" y1="183" x2="228" y2="183" stroke="#dc2626" stroke-width="1" stroke-dasharray="4,3"/>
+<line x1="228" y1="183" x2="228" y2="285" stroke="#dc2626" stroke-width="1" stroke-dasharray="4,3"/>
+<text x="52" y="186" fill="#dc2626" font-size="9" text-anchor="end" font-family="Fira Code">PL1</text>
+<text x="228" y="300" fill="#dc2626" font-size="9" text-anchor="middle" font-family="Fira Code">Y1</text>
+<text x="288" y="300" fill="#7c3aed" font-size="9" text-anchor="middle" font-family="Fira Code">Yf</text>
+<line x1="233" y1="290" x2="283" y2="290" stroke="#dc2626" stroke-width="1.5"/>
+<text x="258" y="308" fill="#dc2626" font-size="8" font-family="DM Sans" text-anchor="middle">Recessionary Gap</text>
+</svg>
+</div>
+<p class="graph-caption">AD intersects SRAS to the LEFT of LRAS → recessionary gap (Y1 &lt; Yf).</p>
+</div>
+
+<div class="card"><h3>Long-Run Self-Correction</h3>
+<p><strong>Recessionary gap:</strong> High unemployment → wages fall → SRAS shifts RIGHT → return to Yf at lower PL.</p>
+<p><strong>Inflationary gap:</strong> Low unemployment → wages rise → SRAS shifts LEFT → return to Yf at higher PL.</p>
+<div class="takeaway"><strong>Key Takeaway:</strong> Self-correction works through WAGE ADJUSTMENT shifting SRAS. It does NOT involve AD shifting. The long-run equilibrium is where AD, SRAS, and LRAS all meet.</div>
+<div class="takeaway"><strong>Key Takeaway:</strong> Self-correction can be very slow (especially from a recession), which is the argument FOR active fiscal/monetary policy intervention.</div>
+</div>
+
+<div class="card"><h3>The Multiplier Effect</h3>
+<div class="formula">MPC + MPS = 1</div>
+<div class="formula">Spending Multiplier = 1 ÷ MPS = 1 ÷ (1 − MPC)</div>
+<div class="formula">Tax Multiplier = −MPC ÷ MPS</div>
+<div class="formula">Balanced Budget Multiplier = 1 (always)</div>
+<div class="formula">ΔReal GDP = Multiplier × Initial ΔSpending</div>
+<div class="takeaway"><strong>Key Takeaway:</strong> The spending multiplier is ALWAYS larger (in absolute value) than the tax multiplier. Why? The first dollar of government spending is fully spent. The first dollar of a tax cut is only partially spent (MPC) and partially saved (MPS).</div>
+<div class="takeaway"><strong>Key Takeaway:</strong> The balanced budget multiplier is always exactly 1. If G rises by $100 and T rises by $100, GDP increases by exactly $100.</div>
+</div>
+
+<div class="practice"><h4>Practice Problems — Unit 3</h4>
+
+<div class="q-block" data-ans="1"><div class="q-num">Q12</div>
+<div class="q-text">If MPC = 0.8, the spending multiplier is:</div>
+<div class="q-opts">
+<button class="q-opt" data-i="0">A) 4</button>
+<button class="q-opt" data-i="1">B) 5</button>
+<button class="q-opt" data-i="2">C) 0.8</button>
+<button class="q-opt" data-i="3">D) 8</button>
+</div>
+<div class="q-expl"><strong>Answer: B.</strong> 1/(1−0.8) = 1/0.2 = 5.</div>
+</div>
+
+<div class="q-block" data-ans="0"><div class="q-num">Q13</div>
+<div class="q-text">A negative supply shock (oil price spike) causes:</div>
+<div class="q-opts">
+<button class="q-opt" data-i="0">A) SRAS left → higher PL, lower GDP (stagflation)</button>
+<button class="q-opt" data-i="1">B) AD left → lower PL, lower GDP</button>
+<button class="q-opt" data-i="2">C) LRAS right → higher potential GDP</button>
+<button class="q-opt" data-i="3">D) SRAS right → lower PL, higher GDP</button>
+</div>
+<div class="q-expl"><strong>Answer: A.</strong> Higher input costs → SRAS shifts left → stagflation (prices up, output down). Policymaker's nightmare.</div>
+</div>
+
+<div class="q-block" data-ans="2"><div class="q-num">Q14</div>
+<div class="q-text">In long-run self-correction from a recessionary gap:</div>
+<div class="q-opts">
+<button class="q-opt" data-i="0">A) AD shifts right</button>
+<button class="q-opt" data-i="1">B) LRAS shifts left</button>
+<button class="q-opt" data-i="2">C) SRAS shifts right</button>
+<button class="q-opt" data-i="3">D) SRAS shifts left</button>
+</div>
+<div class="q-expl"><strong>Answer: C.</strong> High unemployment → wages fall → lower production costs → SRAS shifts RIGHT → economy returns to Yf at a lower PL.</div>
+</div>
+
+<div class="q-block" data-ans="2"><div class="q-num">Q15</div>
+<div class="q-text">Government spending increases by $50B. MPC = 0.8. Max ΔGDP is:</div>
+<div class="q-opts">
+<button class="q-opt" data-i="0">A) $50 billion</button>
+<button class="q-opt" data-i="1">B) $200 billion</button>
+<button class="q-opt" data-i="2">C) $250 billion</button>
+<button class="q-opt" data-i="3">D) $400 billion</button>
+</div>
+<div class="q-expl"><strong>Answer: C.</strong> Multiplier = 5. ΔGDP = 5 × $50B = $250B.</div>
+</div>
+
+<div class="q-block" data-ans="1"><div class="q-num">Q16</div>
+<div class="q-text">Taxes are CUT by $50B. MPC = 0.8. Max ΔGDP is:</div>
+<div class="q-opts">
+<button class="q-opt" data-i="0">A) $250 billion</button>
+<button class="q-opt" data-i="1">B) $200 billion</button>
+<button class="q-opt" data-i="2">C) $50 billion</button>
+<button class="q-opt" data-i="3">D) $40 billion</button>
+</div>
+<div class="q-expl"><strong>Answer: B.</strong> Tax multiplier = −0.8/0.2 = −4. ΔGDP = −4 × (−$50B) = +$200B. Note: smaller effect than the same $50B in spending.</div>
+</div>
+
+<div class="q-block" data-ans="0"><div class="q-num">Q17</div>
+<div class="q-text">A decrease in consumer confidence shifts:</div>
+<div class="q-opts">
+<button class="q-opt" data-i="0">A) AD left</button>
+<button class="q-opt" data-i="1">B) AD right</button>
+<button class="q-opt" data-i="2">C) SRAS left</button>
+<button class="q-opt" data-i="3">D) LRAS right</button>
+</div>
+<div class="q-expl"><strong>Answer: A.</strong> Lower confidence → consumers spend less → C falls → AD shifts LEFT.</div>
+</div>
+</div>
+
+<div class="frq"><h4>Free-Response — Unit 3</h4>
+<div class="frq-prompt">
+<p>Macrostan is in long-run equilibrium. A global pandemic crushes consumer confidence.</p>
+<ol>
+<li>Draw AD-AS showing initial equilibrium.</li>
+<li>Show the effect of decreased confidence. What happens to real GDP, PL, unemployment?</li>
+<li>MPC = 0.75. Government increases spending by $200B. Calculate max ΔGDP.</li>
+<li>Show fiscal policy effect on your graph.</li>
+<li>Explain long-run self-correction if government does nothing.</li>
+</ol>
+</div>
+<button class="reveal-btn" onclick="toggleFRQ(this)">Reveal Answer</button>
+<div class="frq-ans">
+<p><strong>(a)</strong> AD, SRAS, LRAS all intersecting at Yf.</p>
+<p><strong>(b)</strong> Lower confidence → C falls → <em>AD shifts LEFT</em>. Real GDP falls below Yf, PL falls, unemployment rises. Recessionary gap.</p>
+<p><strong>(c)</strong> Multiplier = 1/(1−0.75) = <em>4</em>. ΔGDP = 4 × $200B = <em>$800B</em>.</p>
+<p><strong>(d)</strong> Government spending shifts AD RIGHT, toward Yf.</p>
+<p><strong>(e)</strong> Without intervention: high unemployment → <em>wages fall</em> → SRAS shifts RIGHT → economy returns to Yf at a lower PL. Slow and painful process.</p>
+</div>
+</div>
+</section>
+
+<!-- ═══════════════════════ UNIT 4 ═══════════════════════ -->
+<section class="unit" id="u4">
+<div class="unit-badge">Unit 4</div>
+<h2>Fiscal Policy</h2>
+<p class="unit-desc">Government taxing & spending tools, automatic stabilizers, the crowding-out effect, and deficits.</p>
+
+<div class="card"><h3>Fiscal Policy Tools</h3>
+<p><strong>Expansionary</strong> (fight recession): ↑G or ↓T → AD shifts RIGHT.</p>
+<p><strong>Contractionary</strong> (fight inflation): ↓G or ↑T → AD shifts LEFT.</p>
+<div class="takeaway"><strong>Key Takeaway:</strong> Fiscal policy is conducted by Congress and the President — NOT the Fed. It has implementation lags because it requires legislative action.</div>
+<div class="takeaway"><strong>Key Takeaway:</strong> Changes in G shift AD by the FULL spending multiplier. Tax changes shift AD by the smaller tax multiplier (because part of the tax change is saved, not spent).</div>
+</div>
+
+<div class="card"><h3>Automatic Stabilizers</h3>
+<p>Built-in budget features that cushion the business cycle without new legislation:</p>
+<ul>
+<li><strong>Progressive income taxes:</strong> Revenues fall in recessions (disposable income cushioned); rise in booms (restraining spending).</li>
+<li><strong>Unemployment benefits:</strong> Payments increase in recessions; decrease in expansions.</li>
+</ul>
+<div class="takeaway"><strong>Key Takeaway:</strong> Automatic stabilizers reduce the SEVERITY of cycles but cannot eliminate them. They work FASTER than discretionary policy because they don't require Congressional action.</div>
+</div>
+
+<div class="card"><h3>Crowding-Out Effect</h3>
+<p>Government borrows to fund deficit spending → demand for loanable funds ↑ → real interest rate ↑ → private investment ↓.</p>
+<div class="formula">Gov't deficit spending → Borrow in LF market → Real i rises → Private I falls → Partially offsets stimulus</div>
+<div class="takeaway"><strong>Key Takeaway:</strong> Crowding out means the ACTUAL GDP increase is LESS than what the multiplier alone would predict. The spending multiplier gives the MAXIMUM possible effect.</div>
+<div class="takeaway"><strong>Key Takeaway:</strong> The crowding out debate: Keynesians argue it's small in a recession (lots of idle savings). Classical economists argue it's large and makes fiscal policy ineffective.</div>
+</div>
+
+<div class="graph-wrap"><h4>Key Graph: Loanable Funds Market (Crowding Out)</h4>
+<div class="graph-area">
+<svg viewBox="0 0 440 310" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="a4" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#78716c"/></marker></defs>
+<line x1="60" y1="265" x2="400" y2="265" stroke="#78716c" stroke-width="1.5" marker-end="url(#a4)"/>
+<line x1="60" y1="265" x2="60" y2="28" stroke="#78716c" stroke-width="1.5" marker-end="url(#a4)"/>
+<text x="230" y="298" fill="#78716c" font-size="11" text-anchor="middle" font-family="DM Sans">Q of Loanable Funds</text>
+<text x="20" y="147" fill="#78716c" font-size="11" text-anchor="middle" font-family="DM Sans" transform="rotate(-90,20,147)">Real Interest Rate</text>
+<line x1="100" y1="235" x2="360" y2="55" stroke="#0d9488" stroke-width="2.5"/>
+<text x="365" y="50" fill="#0d9488" font-size="11" font-weight="700" font-family="DM Sans">S</text>
+<line x1="100" y1="55" x2="340" y2="235" stroke="#d97706" stroke-width="2.5"/>
+<text x="342" y="243" fill="#d97706" font-size="11" font-weight="700" font-family="DM Sans">D1</text>
+<line x1="140" y1="55" x2="380" y2="235" stroke="#d97706" stroke-width="2" stroke-dasharray="7,5" opacity=".55"/>
+<text x="382" y="243" fill="#d97706" font-size="10" font-family="DM Sans" opacity=".55">D2</text>
+<circle cx="218" cy="147" r="5" fill="#dc2626"/>
+<text x="195" y="140" fill="#dc2626" font-size="9" font-weight="700" font-family="DM Sans">E1</text>
+<circle cx="243" cy="130" r="5" fill="#7c3aed"/>
+<text x="249" y="124" fill="#7c3aed" font-size="9" font-weight="700" font-family="DM Sans">E2</text>
+<line x1="60" y1="147" x2="218" y2="147" stroke="#dc2626" stroke-width="1" stroke-dasharray="3,3"/>
+<line x1="60" y1="130" x2="243" y2="130" stroke="#7c3aed" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="52" y="150" fill="#dc2626" font-size="9" text-anchor="end" font-family="Fira Code">r1</text>
+<text x="52" y="133" fill="#7c3aed" font-size="9" text-anchor="end" font-family="Fira Code">r2</text>
+</svg>
+</div>
+<p class="graph-caption">Government borrowing shifts D right (D1→D2), raising real interest rate (r1→r2) and crowding out private investment.</p>
+</div>
+
+<div class="practice"><h4>Practice Problems — Unit 4</h4>
+
+<div class="q-block" data-ans="3"><div class="q-num">Q18</div>
+<div class="q-text">MPC = 0.8. Government CUTS taxes by $100B. Max ΔGDP:</div>
+<div class="q-opts">
+<button class="q-opt" data-i="0">A) $500B increase</button>
+<button class="q-opt" data-i="1">B) $100B increase</button>
+<button class="q-opt" data-i="2">C) $125B increase</button>
+<button class="q-opt" data-i="3">D) $400B increase</button>
+</div>
+<div class="q-expl"><strong>Answer: D.</strong> Tax multiplier = −0.8/0.2 = −4. ΔGDP = −4 × (−$100B) = +$400B.</div>
+</div>
+
+<div class="q-block" data-ans="1"><div class="q-num">Q19</div>
+<div class="q-text">The crowding-out effect means expansionary fiscal policy:</div>
+<div class="q-opts">
+<button class="q-opt" data-i="0">A) Always eliminates a recessionary gap completely</button>
+<button class="q-opt" data-i="1">B) May be partially offset by higher interest rates reducing private investment</button>
+<button class="q-opt" data-i="2">C) Has no effect on the loanable funds market</button>
+<button class="q-opt" data-i="3">D) Is more effective than monetary policy always</button>
+</div>
+<div class="q-expl"><strong>Answer: B.</strong> Government borrowing raises interest rates, reducing private investment. The stimulus is partially offset.</div>
+</div>
+
+<div class="q-block" data-ans="2"><div class="q-num">Q20</div>
+<div class="q-text">Which is an automatic stabilizer?</div>
+<div class="q-opts">
+<button class="q-opt" data-i="0">A) New highway construction bill</button>
+<button class="q-opt" data-i="1">B) Fed buying bonds</button>
+<button class="q-opt" data-i="2">C) The progressive income tax</button>
+<button class="q-opt" data-i="3">D) One-time stimulus checks approved by Congress</button>
+</div>
+<div class="q-expl"><strong>Answer: C.</strong> Progressive taxes automatically adjust without legislation: revenues fall in recessions, rise in booms.</div>
+</div>
+
+<div class="q-block" data-ans="1"><div class="q-num">Q21</div>
+<div class="q-text">Government increases G by $100B AND raises taxes by $100B. GDP changes by:</div>
+<div class="q-opts">
+<button class="q-opt" data-i="0">A) $0</button>
+<button class="q-opt" data-i="1">B) +$100B</button>
+<button class="q-opt" data-i="2">C) +$500B</button>
+<button class="q-opt" data-i="3">D) −$100B</button>
+</div>
+<div class="q-expl"><strong>Answer: B.</strong> Balanced budget multiplier = 1. GDP rises by exactly the amount of the equal spending/tax change.</div>
+</div>
+
+<div class="q-block" data-ans="0"><div class="q-num">Q22</div>
+<div class="q-text">To fight demand-pull inflation, the government should:</div>
+<div class="q-opts">
+<button class="q-opt" data-i="0">A) Decrease G or increase T</button>
+<button class="q-opt" data-i="1">B) Increase G or decrease T</button>
+<button class="q-opt" data-i="2">C) Buy government bonds</button>
+<button class="q-opt" data-i="3">D) Lower the reserve requirement</button>
+</div>
+<div class="q-expl"><strong>Answer: A.</strong> Contractionary fiscal policy: decrease G or increase T → AD shifts left → PL falls, closing the inflationary gap. Options C and D are monetary policy (Fed, not Congress).</div>
+</div>
+</div>
+</section>
+
+<!-- ═══════════════════════ UNIT 5 ═══════════════════════ -->
+<section class="unit" id="u5">
+<div class="unit-badge">Unit 5</div>
+<h2>The Financial Sector</h2>
+<p class="unit-desc">Money, banking, fractional reserves, money creation, and the money market.</p>
+
+<div class="card"><h3>Functions & Measures of Money</h3>
+<p><strong>Three functions:</strong> Medium of exchange, unit of account, store of value.</p>
+<p><strong>M1</strong> = currency + checking deposits + traveler's checks (most liquid). <strong>M2</strong> = M1 + savings + CDs + money market funds.</p>
+<div class="takeaway"><strong>Key Takeaway:</strong> Credit cards are NOT money — they're a short-term loan. Debit cards access checking deposits (M1). Stocks and bonds are NOT money.</div>
+</div>
+
+<div class="card"><h3>Fractional Reserve Banking & Money Creation</h3>
+<div class="formula">Required Reserves = Deposit × Reserve Ratio (RR)</div>
+<div class="formula">Excess Reserves = Deposit − Required Reserves</div>
+<div class="formula">Money Multiplier = 1 ÷ Reserve Ratio</div>
+<div class="formula">Max ΔMoney Supply = Money Multiplier × Initial Excess Reserves</div>
+<div class="takeaway"><strong>Key Takeaway:</strong> Individual banks can only lend out their EXCESS reserves. The BANKING SYSTEM as a whole creates money through the multiplier process as deposits are re-lent.</div>
+<div class="takeaway"><strong>Key Takeaway:</strong> The money multiplier gives the MAXIMUM possible money creation. In reality, money creation is less if banks hold excess reserves or people hold cash.</div>
+<div class="tip"><strong>AP Tip:</strong> A common trick: "How much can BANK A lend?" = its excess reserves. "How much NEW money can the BANKING SYSTEM create?" = multiplier × excess reserves.</div>
+</div>
+
+<div class="card"><h3>The Money Market</h3>
+<p><strong>Money Supply (MS)</strong> is vertical — set by the Fed, independent of interest rate.</p>
+<p><strong>Money Demand (MD)</strong> slopes downward — lower interest rate = lower opportunity cost of holding cash = people hold more money.</p>
+<p><strong>MD shifters:</strong> Changes in price level (higher PL → more money needed → MD right); changes in real GDP/income.</p>
+<div class="takeaway"><strong>Key Takeaway:</strong> The money market determines the NOMINAL interest rate. When MS increases, the interest rate FALLS. When MS decreases, the interest rate RISES.</div>
+<div class="takeaway"><strong>Key Takeaway:</strong> If interest rate is above equilibrium: surplus of money → people buy bonds → bond prices rise → interest rate falls back to equilibrium. The bond price and interest rate move in OPPOSITE directions.</div>
+</div>
+
+<div class="graph-wrap"><h4>Key Graph: The Money Market</h4>
+<div class="graph-area">
+<svg viewBox="0 0 440 310" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="a5" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#78716c"/></marker></defs>
+<line x1="60" y1="265" x2="400" y2="265" stroke="#78716c" stroke-width="1.5" marker-end="url(#a5)"/>
+<line x1="60" y1="265" x2="60" y2="28" stroke="#78716c" stroke-width="1.5" marker-end="url(#a5)"/>
+<text x="230" y="298" fill="#78716c" font-size="11" text-anchor="middle" font-family="DM Sans">Quantity of Money</text>
+<text x="20" y="147" fill="#78716c" font-size="11" text-anchor="middle" font-family="DM Sans" transform="rotate(-90,20,147)">Nominal Interest Rate</text>
+<line x1="218" y1="48" x2="218" y2="260" stroke="#0d9488" stroke-width="2.5"/>
+<text x="223" y="42" fill="#0d9488" font-size="11" font-weight="700" font-family="DM Sans">MS1</text>
+<line x1="278" y1="48" x2="278" y2="260" stroke="#0d9488" stroke-width="2" stroke-dasharray="7,5" opacity=".5"/>
+<text x="283" y="42" fill="#0d9488" font-size="10" font-family="DM Sans" opacity=".5">MS2</text>
+<line x1="118" y1="55" x2="368" y2="245" stroke="#d97706" stroke-width="2.5"/>
+<text x="370" y="253" fill="#d97706" font-size="11" font-weight="700" font-family="DM Sans">MD</text>
+<circle cx="218" cy="130" r="5" fill="#dc2626"/>
+<circle cx="278" cy="175" r="5" fill="#7c3aed"/>
+<line x1="60" y1="130" x2="218" y2="130" stroke="#dc2626" stroke-width="1" stroke-dasharray="3,3"/>
+<line x1="60" y1="175" x2="278" y2="175" stroke="#7c3aed" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="52" y="133" fill="#dc2626" font-size="9" text-anchor="end" font-family="Fira Code">i1</text>
+<text x="52" y="178" fill="#7c3aed" font-size="9" text-anchor="end" font-family="Fira Code">i2</text>
+</svg>
+</div>
+<p class="graph-caption">Fed increases money supply (MS1→MS2) → nominal interest rate falls (i1→i2).</p>
+</div>
+
+<div class="practice"><h4>Practice Problems — Unit 5</h4>
+
+<div class="q-block" data-ans="2"><div class="q-num">Q23</div>
+<div class="q-text">Reserve ratio = 20%. New deposit of $5,000. Max NEW money the banking SYSTEM creates:</div>
+<div class="q-opts">
+<button class="q-opt" data-i="0">A) $5,000</button>
+<button class="q-opt" data-i="1">B) $25,000</button>
+<button class="q-opt" data-i="2">C) $20,000</button>
+<button class="q-opt" data-i="3">D) $4,000</button>
+</div>
+<div class="q-expl"><strong>Answer: C.</strong> Multiplier = 1/0.20 = 5. Total deposits = 5 × $5,000 = $25,000. NEW money = $25,000 − $5,000 = $20,000.</div>
+</div>
+
+<div class="q-block" data-ans="0"><div class="q-num">Q24</div>
+<div class="q-text">An increase in the price level will:</div>
+<div class="q-opts">
+<button class="q-opt" data-i="0">A) Increase money demand → raise the nominal interest rate</button>
+<button class="q-opt" data-i="1">B) Increase money supply → lower the interest rate</button>
+<button class="q-opt" data-i="2">C) Decrease money demand → lower the interest rate</button>
+<button class="q-opt" data-i="3">D) Decrease money supply → raise the interest rate</button>
+</div>
+<div class="q-expl"><strong>Answer: A.</strong> Higher PL → more money needed for transactions → MD shifts RIGHT → interest rate rises.</div>
+</div>
+
+<div class="q-block" data-ans="2"><div class="q-num">Q25</div>
+<div class="q-text">Reserve ratio = 25%. Bank A receives $10,000 deposit. Bank A can lend out:</div>
+<div class="q-opts">
+<button class="q-opt" data-i="0">A) $10,000</button>
+<button class="q-opt" data-i="1">B) $40,000</button>
+<button class="q-opt" data-i="2">C) $7,500</button>
+<button class="q-opt" data-i="3">D) $2,500</button>
+</div>
+<div class="q-expl"><strong>Answer: C.</strong> Required reserves = $10,000 × 0.25 = $2,500. Excess = $10,000 − $2,500 = $7,500. One bank lends only its excess.</div>
+</div>
+
+<div class="q-block" data-ans="1"><div class="q-num">Q26</div>
+<div class="q-text">Bond prices and interest rates are:</div>
+<div class="q-opts">
+<button class="q-opt" data-i="0">A) Directly (positively) related</button>
+<button class="q-opt" data-i="1">B) Inversely (negatively) related</button>
+<button class="q-opt" data-i="2">C) Unrelated</button>
+<button class="q-opt" data-i="3">D) Only related during recessions</button>
+</div>
+<div class="q-expl"><strong>Answer: B.</strong> When people buy bonds, bond prices rise and interest rates fall. When people sell bonds, prices fall and interest rates rise. Always inversely related.</div>
+</div>
+</div>
+</section>
+
+<!-- ═══════════════════════ UNIT 6 ═══════════════════════ -->
+<section class="unit" id="u6">
+<div class="unit-badge">Unit 6</div>
+<h2>Monetary Policy</h2>
+<p class="unit-desc">The Federal Reserve's tools, the transmission mechanism, the Phillips Curve, and policy trade-offs.</p>
+
+<div class="card"><h3>The Fed's Monetary Policy Tools</h3>
+<ul>
+<li><strong>Open Market Operations (OMO)</strong> — Buy bonds = expansionary (↑MS, ↓i). Sell bonds = contractionary (↓MS, ↑i). <em>Primary tool.</em></li>
+<li><strong>Discount Rate</strong> — Rate Fed charges banks. ↓ = expansionary. ↑ = contractionary.</li>
+<li><strong>Reserve Requirement</strong> — ↓RR = more lending = expansionary. ↑RR = less lending = contractionary.</li>
+<li><strong>Federal Funds Rate (FFR)</strong> — Overnight interbank rate. The Fed targets this via OMO.</li>
+</ul>
+<div class="takeaway"><strong>Key Takeaway:</strong> Monetary policy is conducted by the Federal Reserve (NOT Congress). It can be implemented faster than fiscal policy because the Fed doesn't need legislative approval.</div>
+<div class="takeaway"><strong>Key Takeaway:</strong> The Fed targets the federal funds rate, NOT the interest rate directly. By buying/selling bonds, the Fed changes bank reserves which moves the FFR toward the target.</div>
+</div>
+
+<div class="card"><h3>The Chain of Causation — KNOW THIS COLD</h3>
+<div class="formula">EXPANSIONARY: Fed buys bonds → bank reserves ↑ → MS ↑ → nominal i ↓ → I ↑ (and C ↑) → AD → → real GDP ↑, PL ↑, unemployment ↓</div>
+<div class="formula">CONTRACTIONARY: Fed sells bonds → bank reserves ↓ → MS ↓ → nominal i ↑ → I ↓ (and C ↓) → AD ← → real GDP ↓, PL ↓, unemployment ↑</div>
+<div class="takeaway"><strong>Key Takeaway:</strong> On FRQs, you MUST show EVERY LINK. Don't skip from "Fed buys bonds" to "GDP increases." Show: MS → interest rate → investment → AD → GDP/PL. Missing a link = missing a point.</div>
+<div class="takeaway"><strong>Key Takeaway:</strong> Monetary policy affects AD INDIRECTLY through interest rates. Fiscal policy affects AD DIRECTLY (G) or semi-directly (T → disposable income → C).</div>
+<div class="tip"><strong>AP Tip:</strong> The Fed CANNOT control both the money supply and the interest rate independently. If it targets the interest rate, it must let MS adjust. If it targets MS, the interest rate moves freely.</div>
+</div>
+
+<div class="card"><h3>The Phillips Curve</h3>
+<p><strong>Short-Run Phillips Curve (SRPC):</strong> Inverse relationship between inflation and unemployment. Moving ALONG the SRPC reflects changes in AD.</p>
+<p><strong>Long-Run Phillips Curve (LRPC):</strong> Vertical at the NRU. No long-run trade-off between inflation and unemployment.</p>
+<ul>
+<li>↑AD → move UP and LEFT along SRPC (lower unemployment, higher inflation)</li>
+<li>↓AD → move DOWN and RIGHT along SRPC (higher unemployment, lower inflation)</li>
+<li>Supply shock or change in expected inflation → SRPC SHIFTS</li>
+<li>Negative supply shock → SRPC shifts RIGHT/UP (stagflation)</li>
+<li>Positive supply shock → SRPC shifts LEFT/DOWN</li>
+</ul>
+<div class="takeaway"><strong>Key Takeaway:</strong> The SRPC is the mirror image of AD-AS. When AD shifts right in AD-AS (higher GDP, higher PL), the economy moves up-left on the Phillips Curve (lower unemployment, higher inflation).</div>
+<div class="takeaway"><strong>Key Takeaway:</strong> LRAS is vertical at Yf. LRPC is vertical at NRU. They represent the same concept: the economy's long-run equilibrium output and employment.</div>
+<div class="takeaway"><strong>Key Takeaway:</strong> When expected inflation changes, the SRPC shifts. If workers expect 5% inflation and negotiate higher wages, the SRPC shifts up — at every unemployment rate, actual inflation is higher.</div>
+</div>
+
+<div class="graph-wrap"><h4>Key Graph: Phillips Curve</h4>
+<div class="graph-area">
+<svg viewBox="0 0 440 310" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="a6" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#78716c"/></marker></defs>
+<line x1="60" y1="265" x2="400" y2="265" stroke="#78716c" stroke-width="1.5" marker-end="url(#a6)"/>
+<line x1="60" y1="265" x2="60" y2="28" stroke="#78716c" stroke-width="1.5" marker-end="url(#a6)"/>
+<text x="230" y="298" fill="#78716c" font-size="11" text-anchor="middle" font-family="DM Sans">Unemployment Rate</text>
+<text x="20" y="147" fill="#78716c" font-size="11" text-anchor="middle" font-family="DM Sans" transform="rotate(-90,20,147)">Inflation Rate</text>
+<line x1="238" y1="48" x2="238" y2="260" stroke="#7c3aed" stroke-width="2.5"/>
+<text x="244" y="42" fill="#7c3aed" font-size="11" font-weight="700" font-family="DM Sans">LRPC</text>
+<path d="M98,78 Q178,128 228,168 Q278,212 378,235" fill="none" stroke="#d97706" stroke-width="2.5"/>
+<text x="380" y="243" fill="#d97706" font-size="11" font-weight="700" font-family="DM Sans">SRPC</text>
+<circle cx="238" cy="168" r="5" fill="#0d9488"/>
+<text x="246" y="162" fill="#0d9488" font-size="10" font-weight="700" font-family="DM Sans">A (LR eq)</text>
+<circle cx="162" cy="112" r="5" fill="#dc2626"/>
+<text x="108" y="106" fill="#dc2626" font-size="10" font-weight="700" font-family="DM Sans">B (↑AD)</text>
+<circle cx="308" cy="210" r="5" fill="#1d4ed8"/>
+<text x="314" y="205" fill="#1d4ed8" font-size="10" font-weight="700" font-family="DM Sans">C (↓AD)</text>
+<text x="238" y="280" fill="#7c3aed" font-size="9" font-family="Fira Code" text-anchor="middle">NRU</text>
+</svg>
+</div>
+<p class="graph-caption">A = long-run equilibrium. B = expansionary policy (up-left along SRPC). C = contractionary (down-right).</p>
+</div>
+
+<div class="practice"><h4>Practice Problems — Unit 6</h4>
+
+<div class="q-block" data-ans="1"><div class="q-num">Q27</div>
+<div class="q-text">To fight a recession, the Fed should:</div>
+<div class="q-opts">
+<button class="q-opt" data-i="0">A) Sell government bonds</button>
+<button class="q-opt" data-i="1">B) Buy government bonds</button>
+<button class="q-opt" data-i="2">C) Raise the discount rate</button>
+<button class="q-opt" data-i="3">D) Increase the reserve requirement</button>
+</div>
+<div class="q-expl"><strong>Answer: B.</strong> Buy bonds → inject reserves → MS ↑ → i ↓ → I ↑ → AD right → GDP ↑, unemployment ↓.</div>
+</div>
+
+<div class="q-block" data-ans="0"><div class="q-num">Q28</div>
+<div class="q-text">The Fed sells bonds. What happens to MS and the nominal interest rate?</div>
+<div class="q-opts">
+<button class="q-opt" data-i="0">A) MS decreases, interest rate rises</button>
+<button class="q-opt" data-i="1">B) MS increases, interest rate falls</button>
+<button class="q-opt" data-i="2">C) MS decreases, interest rate falls</button>
+<button class="q-opt" data-i="3">D) MS increases, interest rate rises</button>
+</div>
+<div class="q-expl"><strong>Answer: A.</strong> Selling bonds pulls money out of banks → MS decreases → interest rate rises. Contractionary.</div>
+</div>
+
+<div class="q-block" data-ans="2"><div class="q-num">Q29</div>
+<div class="q-text">Movement UP and LEFT along the SRPC is caused by:</div>
+<div class="q-opts">
+<button class="q-opt" data-i="0">A) Negative supply shock</button>
+<button class="q-opt" data-i="1">B) Decrease in AD</button>
+<button class="q-opt" data-i="2">C) Increase in AD</button>
+<button class="q-opt" data-i="3">D) Increase in expected inflation</button>
+</div>
+<div class="q-expl"><strong>Answer: C.</strong> Movement ALONG SRPC = AD change. Up-left = lower unemployment, higher inflation = AD increased. Supply shocks and expectations SHIFT the curve.</div>
+</div>
+
+<div class="q-block" data-ans="2"><div class="q-num">Q30</div>
+<div class="q-text">The SRPC shifts RIGHT when:</div>
+<div class="q-opts">
+<button class="q-opt" data-i="0">A) AD increases</button>
+<button class="q-opt" data-i="1">B) AD decreases</button>
+<button class="q-opt" data-i="2">C) There's a negative supply shock</button>
+<button class="q-opt" data-i="3">D) The economy reaches full employment</button>
+</div>
+<div class="q-expl"><strong>Answer: C.</strong> Negative supply shock (e.g., oil price spike) shifts SRPC right/up — at every unemployment rate, inflation is higher. This mirrors SRAS shifting left in AD-AS.</div>
+</div>
+
+<div class="q-block" data-ans="2"><div class="q-num">Q31</div>
+<div class="q-text">In the LONG RUN, the Phillips Curve is:</div>
+<div class="q-opts">
+<button class="q-opt" data-i="0">A) Downward-sloping, showing a permanent trade-off</button>
+<button class="q-opt" data-i="1">B) Horizontal</button>
+<button class="q-opt" data-i="2">C) Vertical at the natural rate of unemployment</button>
+<button class="q-opt" data-i="3">D) Upward-sloping</button>
+</div>
+<div class="q-expl"><strong>Answer: C.</strong> LRPC is vertical at NRU. No long-run trade-off. Economy returns to NRU regardless of inflation.</div>
+</div>
+
+<div class="q-block" data-ans="0"><div class="q-num">Q32</div>
+<div class="q-text">The correct expansionary monetary policy sequence is:</div>
+<div class="q-opts">
+<button class="q-opt" data-i="0">A) Buy bonds → MS ↑ → i ↓ → I ↑ → AD right</button>
+<button class="q-opt" data-i="1">B) Sell bonds → MS ↑ → i ↓ → I ↑ → AD right</button>
+<button class="q-opt" data-i="2">C) Buy bonds → MS ↓ → i ↑ → I ↓ → AD left</button>
+<button class="q-opt" data-i="3">D) Lower taxes → C ↑ → AD right</button>
+</div>
+<div class="q-expl"><strong>Answer: A.</strong> The full chain: buy bonds → reserves up → MS up → interest rate down → investment up → AD right. Option D is fiscal policy, not monetary.</div>
+</div>
+</div>
+
+<div class="frq"><h4>Free-Response — Unit 6 (Full Chain)</h4>
+<div class="frq-prompt">
+<p>The economy has high unemployment and low inflation.</p>
+<ol>
+<li>Identify the appropriate open-market operation.</li>
+<li>Explain the effect on money supply and nominal interest rate (reference the money market).</li>
+<li>Explain how the interest rate change affects investment and AD.</li>
+<li>Show the effect on real GDP and price level using AD-AS.</li>
+<li>Show the effect on unemployment and inflation using the Phillips Curve.</li>
+</ol>
+</div>
+<button class="reveal-btn" onclick="toggleFRQ(this)">Reveal Answer</button>
+<div class="frq-ans">
+<p><strong>(a)</strong> Fed should <em>buy government bonds</em>.</p>
+<p><strong>(b)</strong> Buying bonds injects reserves → <em>MS shifts right</em> in money market → nominal interest rate <em>falls</em>.</p>
+<p><strong>(c)</strong> Lower i → borrowing cheaper → <em>investment (I) increases</em>, interest-sensitive consumption increases → <em>AD shifts right</em>.</p>
+<p><strong>(d)</strong> AD right → <em>real GDP increases</em> (toward Yf), <em>PL increases</em>.</p>
+<p><strong>(e)</strong> Phillips Curve: economy moves <em>up and left along SRPC</em> → <em>unemployment falls, inflation rises</em>.</p>
+</div>
+</div>
+</section>
+
+<!-- ═══════════════════════ UNIT 7 ═══════════════════════ -->
+<section class="unit" id="u7">
+<div class="unit-badge">Unit 7</div>
+<h2>International Trade & Finance</h2>
+<p class="unit-desc">Balance of payments, exchange rates, capital flows, and the international effects of domestic policy.</p>
+
+<div class="card"><h3>Balance of Payments</h3>
+<p><strong>Current Account:</strong> Trade in goods & services, investment income, net transfers. A trade DEFICIT = imports &gt; exports.</p>
+<p><strong>Capital (Financial) Account:</strong> Investment flows (FDI, portfolio investment).</p>
+<div class="formula">Current Account + Capital Account = 0 (they must balance)</div>
+<div class="takeaway"><strong>Key Takeaway:</strong> A current account DEFICIT must be offset by a capital account SURPLUS. The country is buying more than it sells, financed by foreign investment inflows.</div>
+<div class="takeaway"><strong>Key Takeaway:</strong> The U.S. has run a persistent current account deficit for decades — this means foreigners are investing heavily in U.S. assets (buying Treasury bonds, real estate, stocks).</div>
+</div>
+
+<div class="card"><h3>Exchange Rates</h3>
+<p><strong>Appreciation:</strong> Currency gets stronger → imports cheaper, exports more expensive → net exports ↓.</p>
+<p><strong>Depreciation:</strong> Currency gets weaker → imports more expensive, exports cheaper → net exports ↑.</p>
+<p><strong>Demand for a currency increases (appreciation) when:</strong></p>
+<ul>
+<li>Foreigners buy our exports</li>
+<li>Foreign investors invest in our country (buy our assets)</li>
+<li>Our interest rates rise relative to others (capital inflows)</li>
+</ul>
+<p><strong>Supply of a currency increases (depreciation) when:</strong></p>
+<ul>
+<li>We buy imports from abroad</li>
+<li>We invest in foreign countries</li>
+<li>Our interest rates fall (capital outflows)</li>
+<li>Our inflation rises relative to others</li>
+</ul>
+<div class="takeaway"><strong>Key Takeaway:</strong> INTEREST RATE DIFFERENTIALS drive exchange rates in the short run. If U.S. rates rise, foreign capital pours in → demand for $ rises → $ appreciates.</div>
+<div class="takeaway"><strong>Key Takeaway:</strong> INFLATION DIFFERENTIALS drive exchange rates in the long run. If U.S. inflation is higher, our goods get expensive → fewer exports → $ depreciates.</div>
+</div>
+
+<div class="card"><h3>The Critical International Linkage Chain</h3>
+<div class="formula">↑ US interest rates → capital flows IN → D$ ↑ → $ APPRECIATES → US exports ↓, imports ↑ → Xn ↓ → AD ↓</div>
+<div class="formula">↓ US interest rates → capital flows OUT → S$ ↑ → $ DEPRECIATES → US exports ↑, imports ↓ → Xn ↑ → AD ↑</div>
+<div class="takeaway"><strong>Key Takeaway:</strong> This is the MOST TESTED chain in Unit 7. Contractionary monetary policy is REINFORCED by the trade effect: higher rates directly reduce I, AND the stronger dollar reduces Xn. Double hit to AD.</div>
+<div class="takeaway"><strong>Key Takeaway:</strong> Expansionary monetary policy is also reinforced: lower rates increase I domestically, AND the weaker dollar boosts Xn. Double boost to AD.</div>
+<div class="tip"><strong>AP Tip:</strong> Know how to draw the forex market. Supply and demand for a currency, with the exchange rate (price of $ in foreign currency) on the Y-axis. Shifts in D$ or S$ change the exchange rate.</div>
+</div>
+
+<div class="graph-wrap"><h4>Key Graph: Foreign Exchange Market (USD)</h4>
+<div class="graph-area">
+<svg viewBox="0 0 440 310" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="a7" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#78716c"/></marker></defs>
+<line x1="60" y1="265" x2="400" y2="265" stroke="#78716c" stroke-width="1.5" marker-end="url(#a7)"/>
+<line x1="60" y1="265" x2="60" y2="28" stroke="#78716c" stroke-width="1.5" marker-end="url(#a7)"/>
+<text x="230" y="298" fill="#78716c" font-size="11" text-anchor="middle" font-family="DM Sans">Quantity of US Dollars</text>
+<text x="20" y="147" fill="#78716c" font-size="11" text-anchor="middle" font-family="DM Sans" transform="rotate(-90,20,147)">Price of $ (in ¥)</text>
+<line x1="118" y1="228" x2="358" y2="55" stroke="#0d9488" stroke-width="2.5"/>
+<text x="362" y="50" fill="#0d9488" font-size="11" font-weight="700" font-family="DM Sans">S$</text>
+<line x1="118" y1="55" x2="338" y2="228" stroke="#d97706" stroke-width="2.5"/>
+<text x="340" y="236" fill="#d97706" font-size="11" font-weight="700" font-family="DM Sans">D$1</text>
+<line x1="158" y1="55" x2="378" y2="228" stroke="#d97706" stroke-width="2" stroke-dasharray="7,5" opacity=".55"/>
+<text x="380" y="236" fill="#d97706" font-size="10" font-family="DM Sans" opacity=".55">D$2</text>
+<circle cx="226" cy="140" r="5" fill="#dc2626"/>
+<circle cx="250" cy="122" r="5" fill="#7c3aed"/>
+<line x1="60" y1="140" x2="226" y2="140" stroke="#dc2626" stroke-width="1" stroke-dasharray="3,3"/>
+<line x1="60" y1="122" x2="250" y2="122" stroke="#7c3aed" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="52" y="143" fill="#dc2626" font-size="9" text-anchor="end" font-family="Fira Code">e1</text>
+<text x="52" y="125" fill="#7c3aed" font-size="9" text-anchor="end" font-family="Fira Code">e2</text>
+<text x="295" y="88" fill="#7c3aed" font-size="9" font-family="DM Sans">$ appreciates</text>
+</svg>
+</div>
+<p class="graph-caption">Higher U.S. interest rates → D$ increases (D$1→D$2) → dollar appreciates (e1→e2).</p>
+</div>
+
+<div class="practice"><h4>Practice Problems — Unit 7</h4>
+
+<div class="q-block" data-ans="0"><div class="q-num">Q33</div>
+<div class="q-text">If U.S. interest rates rise relative to Europe, the dollar will _____ and U.S. net exports will _____.</div>
+<div class="q-opts">
+<button class="q-opt" data-i="0">A) Appreciate; decrease</button>
+<button class="q-opt" data-i="1">B) Depreciate; increase</button>
+<button class="q-opt" data-i="2">C) Appreciate; increase</button>
+<button class="q-opt" data-i="3">D) Depreciate; decrease</button>
+</div>
+<div class="q-expl"><strong>Answer: A.</strong> Higher U.S. rates → capital inflows → D$ up → $ appreciates → U.S. goods more expensive → Xn decreases.</div>
+</div>
+
+<div class="q-block" data-ans="2"><div class="q-num">Q34</div>
+<div class="q-text">A country with a current account deficit must have:</div>
+<div class="q-opts">
+<button class="q-opt" data-i="0">A) A capital account deficit</button>
+<button class="q-opt" data-i="1">B) A balanced capital account</button>
+<button class="q-opt" data-i="2">C) A capital account surplus</button>
+<button class="q-opt" data-i="3">D) Cannot be determined</button>
+</div>
+<div class="q-expl"><strong>Answer: C.</strong> CA + KA = 0. Current account deficit (negative) must be offset by capital account surplus (positive).</div>
+</div>
+
+<div class="q-block" data-ans="1"><div class="q-num">Q35</div>
+<div class="q-text">If the yen depreciates relative to the dollar:</div>
+<div class="q-opts">
+<button class="q-opt" data-i="0">A) Japanese exports become more expensive for Americans</button>
+<button class="q-opt" data-i="1">B) Japanese exports become cheaper for Americans</button>
+<button class="q-opt" data-i="2">C) U.S. exports to Japan become cheaper</button>
+<button class="q-opt" data-i="3">D) Japan's net exports will decrease</button>
+</div>
+<div class="q-expl"><strong>Answer: B.</strong> Weaker yen = Japanese goods cheaper in dollar terms → Japanese exports to U.S. become cheaper → Japan's net exports increase.</div>
+</div>
+
+<div class="q-block" data-ans="2"><div class="q-num">Q36</div>
+<div class="q-text">If U.S. inflation rises significantly relative to other countries:</div>
+<div class="q-opts">
+<button class="q-opt" data-i="0">A) Demand for dollars will increase</button>
+<button class="q-opt" data-i="1">B) The dollar will appreciate</button>
+<button class="q-opt" data-i="2">C) The dollar will depreciate</button>
+<button class="q-opt" data-i="3">D) U.S. net exports will increase</button>
+</div>
+<div class="q-expl"><strong>Answer: C.</strong> Higher U.S. inflation → U.S. goods more expensive → fewer exports → D$ falls, S$ rises → $ depreciates.</div>
+</div>
+
+<div class="q-block" data-ans="1"><div class="q-num">Q37</div>
+<div class="q-text">Expansionary monetary policy in the U.S. causes the dollar to _____ and net exports to _____.</div>
+<div class="q-opts">
+<button class="q-opt" data-i="0">A) Appreciate; decrease</button>
+<button class="q-opt" data-i="1">B) Depreciate; increase</button>
+<button class="q-opt" data-i="2">C) Appreciate; increase</button>
+<button class="q-opt" data-i="3">D) Depreciate; decrease</button>
+</div>
+<div class="q-expl"><strong>Answer: B.</strong> Expansionary → lower rates → capital outflows → $ depreciates → U.S. goods cheaper abroad → Xn increases.</div>
+</div>
+
+<div class="q-block" data-ans="3"><div class="q-num">Q38</div>
+<div class="q-text">Which would cause the U.S. dollar to APPRECIATE?</div>
+<div class="q-opts">
+<button class="q-opt" data-i="0">A) The Fed cuts interest rates</button>
+<button class="q-opt" data-i="1">B) U.S. inflation rises sharply</button>
+<button class="q-opt" data-i="2">C) Americans increase purchases of European goods</button>
+<button class="q-opt" data-i="3">D) Foreign investors increase purchases of U.S. Treasury bonds</button>
+</div>
+<div class="q-expl"><strong>Answer: D.</strong> Foreign investors buying U.S. assets must buy dollars → D$ increases → $ appreciates. All other options would cause depreciation.</div>
+</div>
+</div>
+
+<div class="frq"><h4>Free-Response — Unit 7 (International Linkages)</h4>
+<div class="frq-prompt">
+<p>The Federal Reserve conducts contractionary monetary policy by selling government bonds.</p>
+<ol>
+<li>What happens to the U.S. money supply and nominal interest rate?</li>
+<li>Using the foreign exchange market, explain what happens to the value of the dollar.</li>
+<li>What is the effect on U.S. net exports? Explain.</li>
+<li>What is the combined effect on U.S. aggregate demand from BOTH channels?</li>
+<li>What happens to the U.S. current account balance?</li>
+</ol>
+</div>
+<button class="reveal-btn" onclick="toggleFRQ(this)">Reveal Answer</button>
+<div class="frq-ans">
+<p><strong>(a)</strong> Selling bonds → <em>MS decreases</em> → nominal interest rate <em>rises</em>.</p>
+<p><strong>(b)</strong> Higher U.S. rates attract foreign capital → <em>D$ increases</em> → dollar <em>appreciates</em>.</p>
+<p><strong>(c)</strong> Stronger dollar → U.S. exports more expensive, imports cheaper → <em>net exports decrease</em>.</p>
+<p><strong>(d)</strong> AD decreases from TWO channels: (1) higher i → lower I and C, (2) $ appreciation → lower Xn. <em>AD shifts LEFT</em> — double contractionary effect.</p>
+<p><strong>(e)</strong> Current account deficit <em>increases</em> (or surplus shrinks) because net exports decreased.</p>
+</div>
+</div>
+</section>
+
+<!-- ═══════════════ FINAL ═══════════════ -->
+<section class="unit" id="final" style="text-align:center; padding: 60px 0 100px; border-top: 2px solid var(--accent);">
+<h2 style="font-family:'Crimson Pro',serif; font-size:1.6rem; margin-bottom:12px;">You've Completed the Review! 🎓</h2>
+<p style="color:var(--text-secondary); max-width:480px; margin:0 auto 20px;">Go back through any units you struggled with. Redraw every graph from memory. Redo missed problems.</p>
+<div class="hero-stats" style="margin-top:16px;">
+<div class="hero-stat"><div class="label">Final Score</div><div class="num" id="fCorrect">0</div></div>
+<div class="hero-stat"><div class="label">Out Of</div><div class="num" id="fTotal">0</div></div>
+<div class="hero-stat"><div class="label">Accuracy</div><div class="num" id="fPct">—</div></div>
+</div>
+</section>
+
+</div>
+
+<script>
+let correct = 0, attempted = 0;
+const allQs = document.querySelectorAll('.q-block');
+const total = allQs.length;
+document.getElementById('totalQs').textContent = total;
+document.getElementById('sMax').textContent = total;
+
+function updateScore() {
+  document.getElementById('sCorrect').textContent = correct;
+  document.getElementById('sTotal').textContent = attempted;
+  document.getElementById('sPct').textContent = attempted > 0 ? Math.round(correct/attempted*100)+'%' : '—';
+  document.getElementById('fCorrect').textContent = correct;
+  document.getElementById('fTotal').textContent = total;
+  document.getElementById('fPct').textContent = attempted > 0 ? Math.round(correct/attempted*100)+'%' : '—';
+  document.getElementById('progFill').style.width = (attempted/total*100)+'%';
+}
+
+allQs.forEach(q => {
+  const ans = parseInt(q.dataset.ans);
+  const btns = q.querySelectorAll('.q-opt');
+  const expl = q.querySelector('.q-expl');
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (q.classList.contains('correct') || q.classList.contains('wrong')) return;
+      const i = parseInt(btn.dataset.i);
+      attempted++;
+      if (i === ans) { correct++; btn.classList.add('picked','right'); q.classList.add('correct'); }
+      else { btn.classList.add('picked','bad'); q.classList.add('wrong'); btns[ans].classList.add('reveal'); }
+      btns.forEach(b => b.classList.add('locked'));
+      expl.classList.add('show');
+      updateScore();
+    });
+  });
+});
+
+function toggleFRQ(btn) {
+  const ans = btn.nextElementSibling;
+  if (ans.classList.contains('show')) { ans.classList.remove('show'); btn.textContent = 'Reveal Answer'; }
+  else { ans.classList.add('show'); btn.textContent = 'Hide Answer'; }
+}
+
+// Smooth scroll nav
+document.querySelectorAll('.topbar-nav a').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
+// Active nav on scroll
+window.addEventListener('scroll', () => {
+  const units = document.querySelectorAll('.unit');
+  const links = document.querySelectorAll('.topbar-nav a');
+  let cur = '';
+  units.forEach(u => { if (window.scrollY >= u.offsetTop - 100) cur = u.id; });
+  links.forEach(l => {
+    l.classList.remove('active');
+    if (l.getAttribute('href') === '#' + cur) l.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
